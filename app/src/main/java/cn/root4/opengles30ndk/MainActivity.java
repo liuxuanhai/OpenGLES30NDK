@@ -15,7 +15,8 @@ public class MainActivity extends AppCompatActivity {
         mGLSurfaceView = new GLSurfaceView(this);
         mGLSurfaceView.setEGLContextClientVersion(3);
         mGLSurfaceView.setRenderer(new NativeRenderer(0xff0000ff));
-        mGLSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+        //mGLSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+        mGLSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
         setContentView(mGLSurfaceView);
     }
 }

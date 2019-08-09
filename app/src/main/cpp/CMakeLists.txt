@@ -18,7 +18,13 @@ add_library( # Sets the name of the library.
 
         # Provides a relative path to your source file(s).
         native-lib.cpp
-        esUtils.cpp)
+        esUtils.cpp
+#        example1.cpp
+#        example2.cpp
+#        example3.cpp
+#        example4.cpp
+        example5.cpp
+        )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

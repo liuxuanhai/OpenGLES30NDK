@@ -34,13 +34,13 @@ public class NativeRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl10, int width, int height) {
-        Log.i(LOG_TAG, "onSurfaceChanged thread id : " + Thread.currentThread().getId());
+        //Log.i(LOG_TAG, "onSurfaceChanged thread id : " + Thread.currentThread().getId());
         surfaceChanged(width, height);
     }
 
     @Override
     public void onDrawFrame(GL10 gl10) {
-        Log.i(LOG_TAG, "onDrawFrame thread id : " + Thread.currentThread().getId());
+        //Log.i(LOG_TAG, "onDrawFrame thread id : " + Thread.currentThread().getId());
         drawFrame();
     }
 }
