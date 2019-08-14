@@ -1,42 +1,25 @@
 //
 // Created by Raining on 2019/8/9.
+// 线性插值效果 & assets文件调用
 //
 
 #include <GLES3/gl3.h>
 #include <jni.h>
 #include "esUtils.h"
 #include "example.h"
-
-static const char *vertexShaderCode =
-        "#version 300 es\n"
-        "layout(location = 0) in vec3 aPos;"
-        "layout(location = 1) in vec3 aColor;"
-        "out vec4 color;"
-        "void main(){"
-        "gl_Position = vec4(aPos, 1.0);"
-        "color = vec4(aColor, 1.0);"
-        "}";
-
-static const char *fragmentShaderCode =
-        "#version 300 es\n"
-        "precision mediump float;"
-        "out vec4 fragColor;"
-        "in vec4 color;"
-        "void main(){"
-        "fragColor = color;"
-        "}";
+#include <cstdlib>
 
 float vertices[] = {
         // 位置              // 颜色
-        0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // 右下
-        -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // 左下
-        0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // 顶部
+        0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,   // 右下
+        -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,   // 左下
+        0.0f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f    // 顶部
 };
 
 static GLuint program = 0;
-static GLuint vao;
+static GLuint vao = 0;
 
-JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jint color) {
+JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context, jint color) {
     color = 0xffff8000;
     GLfloat alphaF = ((color >> 24) & 0xFF) * 1.0f / 255;
     GLfloat redF = ((color >> 16) & 0xFF) * 1.0f / 255;
@@ -44,7 +27,12 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jint color) {
     GLfloat blueF = (color & 0xFF) * 1.0f / 255;
     glClearColor(redF, greenF, blueF, alphaF);
 
+    char *vertexShaderCode = (char *) readAssetFile(env, context, "vertex1.glsl", true);
+    char *fragmentShaderCode = (char *) readAssetFile(env, context, "fragment1.glsl", true);
     program = createProgram(vertexShaderCode, fragmentShaderCode);
+    free(vertexShaderCode);
+    free(fragmentShaderCode);
+
     if (program) {
         glGenVertexArrays(1, &vao);
         glBindVertexArray(vao);
@@ -56,7 +44,7 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jint color) {
         glEnableVertexAttribArray(0);
 
         //颜色属性
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *) (3 * sizeof(float)));
         glEnableVertexAttribArray(1);
 
         glBindVertexArray(0);

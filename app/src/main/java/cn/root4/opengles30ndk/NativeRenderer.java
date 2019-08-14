@@ -1,5 +1,6 @@
 package cn.root4.opengles30ndk;
 
+import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
 
@@ -14,22 +15,24 @@ public class NativeRenderer implements GLSurfaceView.Renderer {
         System.loadLibrary("native-renderer");
     }
 
-    private native void surfaceCreated(int bgColor);
+    private native void surfaceCreated(Context context, int bgColor);
 
     private native void surfaceChanged(int width, int height);
 
     private native void drawFrame();
 
+    private Context context;
     private int bgColor;
 
-    public NativeRenderer(int bgColor) {
+    public NativeRenderer(Context context, int bgColor) {
+        this.context = context;
         this.bgColor = bgColor;
     }
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
         Log.i(LOG_TAG, "onSurfaceCreated thread id : " + Thread.currentThread().getId());
-        surfaceCreated(bgColor);
+        surfaceCreated(context, bgColor);
     }
 
     @Override

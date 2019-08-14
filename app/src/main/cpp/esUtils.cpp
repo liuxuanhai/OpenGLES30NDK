@@ -1,4 +1,10 @@
 #include "esUtils.h"
+#include "java/Context.h"
+#include <android/asset_manager.h>
+#include <android/asset_manager_jni.h>
+#include "java/AssetManager.h"
+#include "java/BitmapFactory.h"
+#include "java/BitmapFactoryOptions.h"
 
 bool checkGlError(const char *funcName) {
     GLint err = glGetError();
@@ -84,4 +90,57 @@ GLuint createProgram(const char *vtxSrc, const char *fragSrc) {
     glDeleteShader(vtxShader);
     glDeleteShader(fragShader);
     return program;
+}
+
+uint8_t *readAssetFile(JNIEnv *env, jobject context, const char *fileName, bool isString) {
+
+    uint8_t *buf = nullptr;
+
+    Context ctx(env);
+    jobject assetManager = ctx.getAssets(context);
+    AAssetManager *mgr = AAssetManager_fromJava(env, assetManager);
+    if (mgr) {
+        AAsset *asset = AAssetManager_open(mgr, fileName, AASSET_MODE_BUFFER);
+        off_t size = AAsset_getLength(asset);
+        if (size > 0) {
+            if (isString) {
+                buf = (uint8_t *) malloc(size + 1);
+                buf[size] = 0;
+            } else {
+                buf = (uint8_t *) malloc(size);
+            }
+            AAsset_read(asset, buf, size);
+        } else {
+            ALOGE("data is NULL");
+        }
+        AAsset_close(asset);
+    } else {
+        ALOGE("AAssetManager is NULL");
+    }
+    env->DeleteLocalRef(assetManager);
+
+    return buf;
+}
+
+jobject readAssetImage(JNIEnv *env, jobject context, const char *fileName) {
+
+    jobject bmp = nullptr;
+
+    Context ctx(env);
+    jobject assetManagerObj = ctx.getAssets(context);
+    AssetManager am(env);
+    jstring fileNameObj = env->NewStringUTF(fileName);
+    jobject inputStreamObj = am.open(assetManagerObj, fileNameObj);
+    BitmapFactory bf(env);
+    BitmapFactoryOptions bfo(env);
+    jobject optsObj = bfo.newObjectARGB8888();
+
+    bmp = bf.decodeStream(inputStreamObj, nullptr, optsObj);
+
+    env->DeleteLocalRef(optsObj);
+    env->DeleteLocalRef(inputStreamObj);
+    env->DeleteLocalRef(fileNameObj);
+    env->DeleteLocalRef(assetManagerObj);
+
+    return bmp;
 }

@@ -10,6 +10,14 @@ cmake_minimum_required(VERSION 3.4.1)
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+include_directories(./)
+
+include_directories(./image)
+aux_source_directory(./image image)
+
+include_directories(./java)
+aux_source_directory(./java java)
+
 add_library( # Sets the name of the library.
         native-renderer
 
@@ -17,13 +25,17 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
+        ${image}
+        ${java}
         native-lib.cpp
         esUtils.cpp
+
 #        example1.cpp
 #        example2.cpp
 #        example3.cpp
 #        example4.cpp
-        example5.cpp
+#        example5.cpp
+        example6.cpp
         )
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -48,6 +60,8 @@ target_link_libraries( # Specifies the target library.
 
         # Links the target library to the log library
         # included in the NDK.
+        android
+        jnigraphics
         ${log-lib}
         GLESv3
         #EGL

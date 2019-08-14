@@ -7,7 +7,7 @@
 
 #include <jni.h>
 
-JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jint color);
+JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context, jint color);
 
 JNIEXPORT void JNICALL surfaceChanged(JNIEnv *env, jobject obj, jint width, jint height);
 

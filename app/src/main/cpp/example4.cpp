@@ -34,7 +34,7 @@ static const GLfloat vertices[] = {
 static GLuint program = 0;
 static GLuint vao;
 
-JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jint color) {
+JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context, jint color) {
     color = 0xffff8030;
     GLfloat alphaF = ((color >> 24) & 0xFF) * 1.0f / 255;
     GLfloat redF = ((color >> 16) & 0xFF) * 1.0f / 255;

@@ -5,7 +5,7 @@
  * 动态注册
  */
 JNINativeMethod methods[] = {
-        {"surfaceCreated", "(I)V",  (void *) surfaceCreated},
+        {"surfaceCreated", "(Landroid/content/Context;I)V",  (void *) surfaceCreated},
         {"surfaceChanged", "(II)V", (void *) surfaceChanged},
         {"drawFrame",      "()V",   (void *) drawFrame}
 };
