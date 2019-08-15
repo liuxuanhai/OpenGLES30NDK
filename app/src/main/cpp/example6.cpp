@@ -25,7 +25,8 @@ unsigned int indices[] = {
 
 static GLuint program = 0;
 static GLuint vao = 0;
-static GLuint texture = 0;
+static GLuint texture1 = 0;
+static GLuint texture2 = 0;
 
 JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context, jint color) {
     color = 0xffff8000;
@@ -35,8 +36,11 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
     GLfloat blueF = (color & 0xFF) * 1.0f / 255;
     glClearColor(redF, greenF, blueF, alphaF);
 
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
+    //加载纹理1
+    glGenTextures(1, &texture1);
+    //glDeleteTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    //glBindTexture(GL_TEXTURE_2D, 0);
     //为当前绑定的纹理对象设置环绕、过滤方式
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -45,6 +49,21 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
     //加载并生成纹理
     jobject bmp = readAssetImage(env, context, "wall.jpg");
     Image8888 img;
+    img.SetImage(env, bmp);
+    //如果要使用多级渐远纹理，我们必须手动设置所有不同的图像（不断递增第二个参数）
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.m_width, img.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, img.m_pDatas);
+    glGenerateMipmap(GL_TEXTURE_2D);//这会为当前绑定的纹理自动生成所有需要的多级渐远纹理
+    img.ClearAll();
+    env->DeleteLocalRef(bmp);
+
+    //加载纹理2
+    glGenTextures(1, &texture2);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    bmp = readAssetImage(env, context, "awesomeface.png");
     img.SetImage(env, bmp);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.m_width, img.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, img.m_pDatas);
     glGenerateMipmap(GL_TEXTURE_2D);
@@ -84,10 +103,16 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
         glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
         glEnableVertexAttribArray(2);
 
+        //绑定索引数组
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 
         //保存结束
         glBindVertexArray(0);
+
+        //设置常量
+        glUseProgram(program);
+        glUniform1i(glGetUniformLocation(program, "ourTexture1"), 0);
+        glUniform1i(glGetUniformLocation(program, "ourTexture2"), 1);
     }
 }
 
@@ -101,7 +126,13 @@ JNIEXPORT void JNICALL drawFrame(JNIEnv *env, jobject obj) {
 
     if (program) {
         glUseProgram(program);
-        glBindTexture(GL_TEXTURE_2D, texture);
+
+        glActiveTexture(GL_TEXTURE0); // 在绑定纹理之前先激活纹理单元
+        glBindTexture(GL_TEXTURE_2D, texture1);
+
+        glActiveTexture(GL_TEXTURE0 + 1);//GL_TEXTURE1
+        glBindTexture(GL_TEXTURE_2D, texture2);
+
         glBindVertexArray(vao);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     }
