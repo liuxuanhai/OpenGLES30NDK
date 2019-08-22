@@ -1,0 +1,19 @@
+# ninja log v5
+1	456	588174740	CMakeFiles/native-renderer.dir/java/AssetManager.cpp.o	5c78ad4b8bfa6475
+29	514	588174740	CMakeFiles/native-renderer.dir/image/base_Image.c.o	5883be3ea672a04b
+54	515	588174740	CMakeFiles/native-renderer.dir/image/ImageUtils.cpp.o	bc15487e681f4b76
+129	515	588174740	CMakeFiles/native-renderer.dir/java/BitmapFactory.cpp.o	a3cd60ae9e1dfc1c
+154	516	588174740	CMakeFiles/native-renderer.dir/java/BitmapFactoryOptions.cpp.o	93f4bf29e66a1bcf
+204	516	588174740	CMakeFiles/native-renderer.dir/java/Context.cpp.o	ded914bad65df62
+354	566	588174740	CMakeFiles/native-renderer.dir/native-lib.cpp.o	a6c70626e520d06
+456	657	588174740	CMakeFiles/native-renderer.dir/base_Log.cpp.o	37cf0703f4e88acf
+404	727	588174740	CMakeFiles/native-renderer.dir/esUtils.cpp.o	3c084d16581433e
+254	1590	588174741	CMakeFiles/native-renderer.dir/java/Object.cpp.o	e55da59ad6765222
+3	490	588174764	CMakeFiles/native-renderer.dir/example6.cpp.o	137d8bf856c38b97
+492	757	588174765	D:/AndroidStudioProjects/OpenGLES30NDK/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-renderer.so	b5760405e6254abf
+10	540	588174876	CMakeFiles/native-renderer.dir/example6.cpp.o	137d8bf856c38b97
+541	797	588174877	D:/AndroidStudioProjects/OpenGLES30NDK/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-renderer.so	b5760405e6254abf
+7	519	588174917	CMakeFiles/native-renderer.dir/example6.cpp.o	137d8bf856c38b97
+519	737	588174917	D:/AndroidStudioProjects/OpenGLES30NDK/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-renderer.so	b5760405e6254abf
+7	504	588175023	CMakeFiles/native-renderer.dir/example6.cpp.o	137d8bf856c38b97
+504	733	588175023	D:/AndroidStudioProjects/OpenGLES30NDK/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-renderer.so	b5760405e6254abf

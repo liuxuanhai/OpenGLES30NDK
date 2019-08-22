@@ -1,0 +1,3 @@
+ninja: Entering directory `D:\AndroidStudioProjects\OpenGLES30NDK\app\.cxx\cmake\debug\arm64-v8a'
+[1/2] Building CXX object CMakeFiles/native-renderer.dir/example6.cpp.o
+[2/2] Linking CXX shared library D:\AndroidStudioProjects\OpenGLES30NDK\app\build\intermediates\cmake\debug\obj\arm64-v8a\libnative-renderer.so

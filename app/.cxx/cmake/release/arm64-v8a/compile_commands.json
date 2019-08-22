@@ -1,0 +1,67 @@
+[
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\image\\ImageUtils.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\image\\ImageUtils.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\image\\ImageUtils.cpp"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\image\\base_Image.c.o   -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\image\\base_Image.c",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\image\\base_Image.c"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\java\\AssetManager.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\AssetManager.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\AssetManager.cpp"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\java\\BitmapFactory.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\BitmapFactory.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\BitmapFactory.cpp"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\java\\BitmapFactoryOptions.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\BitmapFactoryOptions.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\BitmapFactoryOptions.cpp"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\java\\Context.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\Context.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\Context.cpp"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\java\\Object.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\Object.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\java\\Object.cpp"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\base_Log.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\base_Log.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\base_Log.cpp"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\native-lib.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\native-lib.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\native-lib.cpp"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\esUtils.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\esUtils.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\esUtils.cpp"
+},
+
+{
+  "directory": "D:/AndroidStudioProjects/OpenGLES30NDK/app/.cxx/cmake/release/arm64-v8a",
+  "command": "D:\\Android\\sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_renderer_EXPORTS -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/. -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./image -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./java -ID:/AndroidStudioProjects/OpenGLES30NDK/app/src/main/cpp/./glm  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC   -o CMakeFiles\\native-renderer.dir\\example6.cpp.o -c D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\example6.cpp",
+  "file": "D:\\AndroidStudioProjects\\OpenGLES30NDK\\app\\src\\main\\cpp\\example6.cpp"
+}
+]

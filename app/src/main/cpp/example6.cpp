@@ -1,6 +1,6 @@
 //
 // Created by Raining on 2019/8/14.
-// 纹理
+// 纹理 + 矩阵变换
 //
 
 #include <GLES3/gl3.h>
@@ -8,7 +8,11 @@
 #include "esUtils.h"
 #include "example.h"
 #include <cstdlib>
+#include <ctime>
 #include "image/ImageUtils.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 float vertices[] = {
         //---- 位置 ----  ---- 颜色 ----     - 纹理坐标 -
@@ -51,7 +55,8 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
     Image8888 img;
     img.SetImage(env, bmp);
     //如果要使用多级渐远纹理，我们必须手动设置所有不同的图像（不断递增第二个参数）
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.m_width, img.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, img.m_pDatas);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.m_width, img.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                 img.m_pDatas);
     glGenerateMipmap(GL_TEXTURE_2D);//这会为当前绑定的纹理自动生成所有需要的多级渐远纹理
     img.ClearAll();
     env->DeleteLocalRef(bmp);
@@ -65,7 +70,8 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     bmp = readAssetImage(env, context, "awesomeface.png");
     img.SetImage(env, bmp);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.m_width, img.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, img.m_pDatas);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img.m_width, img.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                 img.m_pDatas);
     glGenerateMipmap(GL_TEXTURE_2D);
     img.ClearAll();
     env->DeleteLocalRef(bmp);
@@ -94,13 +100,15 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
         //开始保存状态
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
         //位置属性
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *) 0);
         glEnableVertexAttribArray(0);
         //颜色属性
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *) (3 * sizeof(float)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+                              (void *) (3 * sizeof(float)));
         glEnableVertexAttribArray(1);
         //纹理坐标
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+                              (void *) (6 * sizeof(float)));
         glEnableVertexAttribArray(2);
 
         //绑定索引数组
@@ -113,6 +121,23 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
         glUseProgram(program);
         glUniform1i(glGetUniformLocation(program, "ourTexture1"), 0);
         glUniform1i(glGetUniformLocation(program, "ourTexture2"), 1);
+
+        glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+        glm::mat4 trans = glm::mat4(1.0f);
+        trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
+        vec = trans * vec;
+        base_LOG("x=%f,y=%f,z=%f", vec.x, vec.y, vec.z);
+
+        glm::mat4 trans2 = glm::mat4(1.0f);
+        const float *v2 = glm::value_ptr(trans2);
+        printMatrix(v2);
+
+        trans2 = glm::rotate(trans2, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        trans2 = glm::scale(trans2, glm::vec3(0.5f, 0.5f, 0.5f));
+        const float *v = glm::value_ptr(trans2);
+        printMatrix(v);
+
+        //glUniformMatrix4fv(glGetUniformLocation(program, "transform"), 1, GL_FALSE, v);
     }
 }
 
@@ -126,6 +151,16 @@ JNIEXPORT void JNICALL drawFrame(JNIEnv *env, jobject obj) {
 
     if (program) {
         glUseProgram(program);
+
+        timeval tv;
+        gettimeofday(&tv, nullptr);
+        float tme = tv.tv_sec - tv.tv_sec / 10000 * 10000 + tv.tv_usec / 1000000.0f;
+        //base_LOG("%f", tme);
+        glm::mat4 trans = glm::mat4(1.0f);
+        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+        trans = glm::rotate(trans, tme, glm::vec3(0.0f, 0.0f, 1.0f));
+        const float *v = glm::value_ptr(trans);
+        glUniformMatrix4fv(glGetUniformLocation(program, "transform"), 1, GL_FALSE, v);
 
         glActiveTexture(GL_TEXTURE0); // 在绑定纹理之前先激活纹理单元
         glBindTexture(GL_TEXTURE_2D, texture1);

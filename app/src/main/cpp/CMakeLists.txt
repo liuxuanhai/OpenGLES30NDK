@@ -18,6 +18,8 @@ aux_source_directory(./image image)
 include_directories(./java)
 aux_source_directory(./java java)
 
+include_directories(./glm)
+
 add_library( # Sets the name of the library.
         native-renderer
 
@@ -27,6 +29,7 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         ${image}
         ${java}
+        base_Log.cpp
         native-lib.cpp
         esUtils.cpp
 
@@ -36,6 +39,7 @@ add_library( # Sets the name of the library.
 #        example4.cpp
 #        example5.cpp
         example6.cpp
+#        example7.cpp
         )
 
 # Searches for a specified prebuilt library and stores the path as a
