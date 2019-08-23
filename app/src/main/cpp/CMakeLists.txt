@@ -38,8 +38,8 @@ add_library( # Sets the name of the library.
 #        example3.cpp
 #        example4.cpp
 #        example5.cpp
-        example6.cpp
-#        example7.cpp
+#        example6.cpp
+        example7.cpp
         )
 
 # Searches for a specified prebuilt library and stores the path as a
