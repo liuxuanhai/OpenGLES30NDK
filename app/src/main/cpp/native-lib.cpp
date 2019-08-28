@@ -5,9 +5,9 @@
  * 动态注册
  */
 JNINativeMethod methods[] = {
-        {"surfaceCreated", "(Landroid/content/Context;I)V",  (void *) surfaceCreated},
-        {"surfaceChanged", "(II)V", (void *) surfaceChanged},
-        {"drawFrame",      "()V",   (void *) drawFrame}
+        {"surfaceCreated", "(Landroid/content/Context;I)V", (void *) surfaceCreated},
+        {"surfaceChanged", "(II)V",                         (void *) surfaceChanged},
+        {"drawFrame",      "()V",                           (void *) drawFrame}
 };
 
 /**
@@ -20,6 +20,17 @@ jint registerNativeMethod(JNIEnv *env) {
     }
     //env->UnregisterNatives(cl);
     return 0;
+}
+
+int gDirection = 0;
+
+extern "C" JNIEXPORT void JNICALL
+Java_cn_root4_opengles30ndk_MainActivity_onDirection(JNIEnv *env, jclass obj, jint d) {
+    if (gDirection == d) {
+        gDirection = 0;
+    } else {
+        gDirection = d;
+    }
 }
 
 /**

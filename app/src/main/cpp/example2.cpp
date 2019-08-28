@@ -1,6 +1,6 @@
 //
 // Created by Raining on 2019/8/9.
-// VAO使用
+// #I# VAO使用
 //
 /*
  VBO将顶点信息放到GPU中，GPU在渲染时去缓存中取数据，二者中间的桥梁是GL-Context。GL-Context整个程序一般只有一个，

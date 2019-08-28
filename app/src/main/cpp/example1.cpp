@@ -1,6 +1,6 @@
 //
 // Created by Raining on 2019/8/9.
-// 画三角形
+// #I# 画三角形
 //
 
 #include <GLES3/gl3.h>

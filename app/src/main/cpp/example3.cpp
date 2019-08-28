@@ -1,6 +1,6 @@
 //
 // Created by Raining on 2019/8/9.
-// VBO + VAO + EBO
+// #I# VBO + VAO + EBO
 //
 /*
  VBO，全称为Vertex Buffer Object，与FBO，PBO并称，但它实际上老不少。就某种意义来说，他就是VA(Vertex Array)的升级版。

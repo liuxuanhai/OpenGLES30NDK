@@ -1,6 +1,6 @@
 //
-// Created by Raining on 2019/8/21.
-// #I# 坐标系变换 + 深度测试
+// Created by Raining on 2019/8/27.
+// #I# lookAt + 欧拉角
 //
 
 #include <GLES3/gl3.h>
@@ -15,60 +15,60 @@
 #include <glm/gtc/type_ptr.hpp>
 
 float vertices[] = {
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-        0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+        0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
+        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+        -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
 
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+        0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
+        0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
+        0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
+        -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
+        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
 
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+        -0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+        -0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
 
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+        0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+        0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
 
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+        0.5f, -0.5f, -0.5f, 1.0f, 1.0f,
+        0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
+        0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
+        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
 
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+        -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
+        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+        -0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
+        -0.5f, 0.5f, -0.5f, 0.0f, 1.0f
 };
 
 glm::vec3 cubePositions[] = {
-        glm::vec3( 0.0f,  0.0f,  0.0f),
-        glm::vec3( 2.0f,  5.0f, -15.0f),
+        glm::vec3(0.0f, 0.0f, 0.0f),
+        glm::vec3(2.0f, 5.0f, -15.0f),
         glm::vec3(-1.5f, -2.2f, -2.5f),
         glm::vec3(-3.8f, -2.0f, -12.3f),
-        glm::vec3( 2.4f, -0.4f, -3.5f),
-        glm::vec3(-1.7f,  3.0f, -7.5f),
-        glm::vec3( 1.3f, -2.0f, -2.5f),
-        glm::vec3( 1.5f,  2.0f, -2.5f),
-        glm::vec3( 1.5f,  0.2f, -1.5f),
-        glm::vec3(-1.3f,  1.0f, -1.5f)
+        glm::vec3(2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f, 3.0f, -7.5f),
+        glm::vec3(1.3f, -2.0f, -2.5f),
+        glm::vec3(1.5f, 2.0f, -2.5f),
+        glm::vec3(1.5f, 0.2f, -1.5f),
+        glm::vec3(-1.3f, 1.0f, -1.5f)
 };
 
 static GLuint program = 0;
@@ -153,6 +153,12 @@ JNIEXPORT void JNICALL surfaceChanged(JNIEnv *env, jobject obj, jint width, jint
     glViewport(0, 0, width, height);
 }
 
+extern int gDirection;
+static float lastTime = 0;
+static glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+static glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+static glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
 JNIEXPORT void JNICALL drawFrame(JNIEnv *env, jobject obj) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -167,32 +173,76 @@ JNIEXPORT void JNICALL drawFrame(JNIEnv *env, jobject obj) {
 
         glBindVertexArray(vao);
 
-        glm::mat4 view = glm::mat4(1.0f);
-        //注意，我们将矩阵向我们要进行移动场景的反方向移动。
-        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-
-        //base_LOG("w=%d,h=%d", sWidth, sHeight);
         glm::mat4 projection;
         projection = glm::perspective(glm::radians(45.0f), (float) sWidth / (float) sHeight,
                                       0.1f, 100.0f);
-
-        glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE,
-                           glm::value_ptr(view));
         glUniformMatrix4fv(glGetUniformLocation(program, "projection"), 1, GL_FALSE,
                            glm::value_ptr(projection));
 
-        //获取时间
         timeval tv;
         gettimeofday(&tv, nullptr);
         float tme = tv.tv_sec - tv.tv_sec / 10000 * 10000 + tv.tv_usec / 1000000.0f;
 
-        //绘制10个立方体
+        float deltaTime = tme - lastTime;
+        lastTime = tme;
+
+        glm::mat4 view = glm::mat4(1.0f);
+        switch (gDirection) {
+            case 1:
+            case 2:
+            case 3:
+            case 4: {
+                float cameraSpeed = 2.5f * deltaTime;
+
+                switch (gDirection) {
+                    case 1://左
+                        cameraPos -=
+                                glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+                        break;
+                    case 2://上
+                        cameraPos += cameraSpeed * cameraFront;
+                        break;
+                    case 3://右
+                        cameraPos +=
+                                glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+                        break;
+                    case 4://下
+                        cameraPos -= cameraSpeed * cameraFront;
+                        break;
+                }
+                view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+                break;
+            }
+
+            default: {
+                float radius = 10.0f;
+                float camX = sin(tme) * radius;
+                float camZ = cos(tme) * radius;
+
+                float yaw = 45.0f;
+                float pitch = 45.0f;
+                glm::vec3 front;
+                front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+                front.y = sin(glm::radians(pitch));
+                front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+                front = glm::normalize(front);
+
+                //摄像机位置、目标位置、世界空间中的上向量
+                view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0) - front,
+                                   glm::vec3(0.0, 1.0, 0.0));
+                break;
+            }
+
+        }
+        glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE,
+                           glm::value_ptr(view));
+
         for (int i = 0; i < 10; i++) {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
-            //model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
             float angle = 20.0f * i;
-            model = glm::rotate(model, tme * glm::radians(50.0f) + glm::radians(angle), glm::vec3(0.5f, 1.0f, 0.0f));
+            model = glm::rotate(model, tme * glm::radians(50.0f) + glm::radians(angle),
+                                glm::vec3(0.5f, 1.0f, 0.0f));
 
             glUniformMatrix4fv(glGetUniformLocation(program, "model"), 1, GL_FALSE,
                                glm::value_ptr(model));

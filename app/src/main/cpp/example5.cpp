@@ -1,6 +1,6 @@
 //
 // Created by Raining on 2019/8/9.
-// 线性插值效果 & assets文件调用
+// #I# 线性插值效果 & assets文件调用
 //
 
 #include <GLES3/gl3.h>
