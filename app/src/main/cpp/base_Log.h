@@ -17,7 +17,9 @@ extern "C"
 
 #define base_LOG(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 
-void printMatrix(const float *mat);
+void printMatrix4x4(const float *mat);
+
+void printMatrix3x3(const float *mat);
 
 #ifdef __cplusplus
 }

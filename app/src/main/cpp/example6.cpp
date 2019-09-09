@@ -130,12 +130,12 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
 
         glm::mat4 trans2 = glm::mat4(1.0f);
         const float *v2 = glm::value_ptr(trans2);
-        printMatrix(v2);
+        printMatrix4x4(v2);
 
         trans2 = glm::rotate(trans2, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
         trans2 = glm::scale(trans2, glm::vec3(0.5f, 0.5f, 0.5f));
         const float *v = glm::value_ptr(trans2);
-        printMatrix(v);
+        printMatrix4x4(v);
 
         //glUniformMatrix4fv(glGetUniformLocation(program, "transform"), 1, GL_FALSE, v);
     }
