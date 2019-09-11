@@ -76,8 +76,8 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
     img.ClearAll();
     env->DeleteLocalRef(bmp);
 
-    char *vertexShaderCode = (char *) readAssetFile(env, context, "vertex2.glsl", true);
-    char *fragmentShaderCode = (char *) readAssetFile(env, context, "fragment2.glsl", true);
+    char *vertexShaderCode = (char *) readAssetFile(env, context, "vertex2.glsl", true, nullptr);
+    char *fragmentShaderCode = (char *) readAssetFile(env, context, "fragment2.glsl", true, nullptr);
     program = createProgram(vertexShaderCode, fragmentShaderCode);
     free(vertexShaderCode);
     free(fragmentShaderCode);

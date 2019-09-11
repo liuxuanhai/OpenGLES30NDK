@@ -17,7 +17,7 @@ GLuint createShader(GLenum shaderType, const char* src);
 //使用着色器生成着色器程序对象
 GLuint createProgram(const char* vtxSrc, const char* fragSrc);
 
-uint8_t *readAssetFile(JNIEnv *env, jobject context, const char *fileName, bool isString);
+uint8_t *readAssetFile(JNIEnv *env, jobject context, const char *fileName, bool isString, int *len);
 
 jobject readAssetImage(JNIEnv *env, jobject context, const char *fileName);
 

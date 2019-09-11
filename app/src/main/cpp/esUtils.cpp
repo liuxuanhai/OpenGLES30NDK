@@ -92,7 +92,8 @@ GLuint createProgram(const char *vtxSrc, const char *fragSrc) {
     return program;
 }
 
-uint8_t *readAssetFile(JNIEnv *env, jobject context, const char *fileName, bool isString) {
+uint8_t *
+readAssetFile(JNIEnv *env, jobject context, const char *fileName, bool isString, int *len) {
 
     uint8_t *buf = nullptr;
 
@@ -102,6 +103,9 @@ uint8_t *readAssetFile(JNIEnv *env, jobject context, const char *fileName, bool 
     if (mgr) {
         AAsset *asset = AAssetManager_open(mgr, fileName, AASSET_MODE_BUFFER);
         off_t size = AAsset_getLength(asset);
+        if (len) {
+            *len = size;
+        }
         if (size > 0) {
             if (isString) {
                 buf = (uint8_t *) malloc(size + 1);

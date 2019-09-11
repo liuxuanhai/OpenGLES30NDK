@@ -89,8 +89,8 @@ JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context,
     glClearColor(redF, greenF, blueF, alphaF);
     glEnable(GL_DEPTH_TEST);
 
-    char *vertexShaderCode = (char *) readAssetFile(env, context, "vertex4.glsl", true);
-    char *fragmentShaderCode = (char *) readAssetFile(env, context, "fragment4.glsl", true);
+    char *vertexShaderCode = (char *) readAssetFile(env, context, "vertex4.glsl", true, nullptr);
+    char *fragmentShaderCode = (char *) readAssetFile(env, context, "fragment4.glsl", true, nullptr);
     program = createProgram(vertexShaderCode, fragmentShaderCode);
     free(vertexShaderCode);
     free(fragmentShaderCode);

@@ -5,11 +5,31 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ffunction-sections -fdata-sections -fvisibility=hidden")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffunction-sections -fdata-sections -fvisibility=hidden")
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--gc-sections")
+
+##########################################################
+set(freetype2_path ${CMAKE_SOURCE_DIR}/../../../../freetype2)
+set(freetype2_include ${freetype2_path}/include)
+set(freetype2_a_path ${freetype2_path}/alibs/${ANDROID_ABI})
+include_directories(${freetype2_include})
+
+##########################################################
+set(freetype2_a ${freetype2_a_path}/libfreetype.a)
+add_library(freetype2lib STATIC IMPORTED)
+set_target_properties(freetype2lib PROPERTIES
+        IMPORTED_LINK_INTERFACE_LANGUAGES "C"
+        IMPORTED_LINK_INTERFACE_LIBRARIES "z"
+        IMPORTED_LOCATION ${freetype2_a}
+        )
+
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+##########################################################
 include_directories(./)
 
 include_directories(./image)
@@ -41,7 +61,8 @@ add_library( # Sets the name of the library.
 #        example6.cpp
 #        example7.cpp
 #        example8.cpp
-        example9.cpp
+#        example9.cpp
+        example11.cpp
         )
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -71,4 +92,5 @@ target_link_libraries( # Specifies the target library.
         ${log-lib}
         GLESv3
         #EGL
+        freetype2lib
         )
