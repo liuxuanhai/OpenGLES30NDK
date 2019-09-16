@@ -105,8 +105,11 @@ static GLuint vbo = 0;
 
 JNIEXPORT void JNICALL surfaceCreated(JNIEnv *env, jobject obj, jobject context, jint color) {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    //开启剔除操作效果
     glEnable(GL_CULL_FACE);
+    //启用混合
     glEnable(GL_BLEND);
+    //混合函数
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     initFont(env, context);

@@ -62,6 +62,7 @@ add_library( # Sets the name of the library.
 #        example7.cpp
 #        example8.cpp
 #        example9.cpp
+#        example10.cpp
         example11.cpp
         )
 
